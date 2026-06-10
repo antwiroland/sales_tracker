@@ -104,7 +104,7 @@ export function InvoiceForm() {
           />
         </div>
         <div>
-          <label className="label">Amount (₦) *</label>
+          <label className="label">Amount (GH₵) *</label>
           <input
             type="number"
             min="0"

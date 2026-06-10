@@ -83,7 +83,7 @@ export const AUDIT_ACTIONS = {
 export type AuditAction = (typeof AUDIT_ACTIONS)[keyof typeof AUDIT_ACTIONS];
 
 // Default app currency for display.
-export const CURRENCY = "₦";
+export const CURRENCY = "GH₵";
 
 export const TV_ROTATION_OPTIONS = [
   { label: "30 Seconds", value: 30 },

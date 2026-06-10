@@ -65,9 +65,9 @@ async function main() {
 
   // ----- Branches -----
   const branchNames = [
-    { name: "Lagos HQ", code: "LAG", location: "Lagos" },
-    { name: "Abuja Branch", code: "ABJ", location: "Abuja" },
-    { name: "Port Harcourt", code: "PHC", location: "Rivers" },
+    { name: "Accra HQ", code: "ACC", location: "Greater Accra" },
+    { name: "Kumasi Branch", code: "KUM", location: "Ashanti" },
+    { name: "Takoradi Branch", code: "TAK", location: "Western" },
   ];
   const branches = await Branch.insertMany(branchNames);
   console.log(`✓ ${branches.length} branches`);
@@ -86,21 +86,21 @@ async function main() {
     password: hash, role: ROLES.ADMIN, position: "Administrator",
   });
   const manager = await User.create({
-    firstName: "Maya", lastName: "Manager", email: "manager@demo.com",
+    firstName: "Yaa", lastName: "Mensah", email: "manager@demo.com",
     password: hash, role: ROLES.MANAGER, position: "Sales Manager", branchId: branches[0]._id,
   });
   await User.create({
-    firstName: "Eli", lastName: "Executive", email: "exec@demo.com",
+    firstName: "Kwesi", lastName: "Boateng", email: "exec@demo.com",
     password: hash, role: ROLES.EXECUTIVE, position: "Chief Sales Officer",
   });
 
   // Set branch managers.
   await Branch.updateMany({}, { managerId: manager._id });
 
-  const firstNames = ["Ada", "Tunde", "Chioma", "Bola", "Emeka", "Ngozi", "Yusuf", "Funke", "Ibrahim", "Zainab", "Kunle", "Amaka"];
-  const lastNames = ["Okafor", "Adeyemi", "Bello", "Eze", "Okonkwo", "Lawal", "Nwosu", "Ade", "Musa", "Ojo"];
+  const firstNames = ["Kwame", "Ama", "Kofi", "Akua", "Yaw", "Abena", "Kwabena", "Adwoa", "Kojo", "Esi", "Kwesi", "Afia"];
+  const lastNames = ["Mensah", "Owusu", "Boateng", "Asante", "Agyeman", "Appiah", "Osei", "Annan", "Addo", "Darko"];
 
-  const customers = ["Acme Ltd", "Globex", "Initech", "Umbrella Co", "Stark Inc", "Wayne Ent", "Soylent", "Hooli", "Pied Piper", "Vandelay"];
+  const customers = ["MTN Ghana", "Melcom", "Fan Milk", "Kasapreko", "Guinness Ghana", "GCB Bank", "Ecobank Ghana", "GOIL", "Unilever Ghana", "Nestlé Ghana"];
 
   let invoiceCount = 0;
   let assignmentCount = 0;

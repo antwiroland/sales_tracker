@@ -8,11 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatCurrency(amount: number): string {
   const n = Number.isFinite(amount) ? amount : 0;
-  return `${CURRENCY}${n.toLocaleString("en-NG", { maximumFractionDigits: 0 })}`;
+  return `${CURRENCY}${n.toLocaleString("en-GH", { maximumFractionDigits: 0 })}`;
 }
 
 export function formatNumber(n: number): string {
-  return (Number.isFinite(n) ? n : 0).toLocaleString("en-NG", {
+  return (Number.isFinite(n) ? n : 0).toLocaleString("en-GH", {
     maximumFractionDigits: 1,
   });
 }
@@ -23,7 +23,7 @@ export function formatPercent(n: number): string {
 
 export function formatDate(d: Date | string): string {
   const date = typeof d === "string" ? new Date(d) : d;
-  return date.toLocaleDateString("en-NG", {
+  return date.toLocaleDateString("en-GH", {
     year: "numeric",
     month: "short",
     day: "numeric",
