@@ -122,11 +122,17 @@ export function Topbar({
       </div>
 
       <div className="flex items-center gap-3 border-l border-slate-200 pl-3">
-        <Avatar name={name} src={image} size={36} />
-        <div className="hidden leading-tight sm:block">
-          <p className="text-sm font-semibold text-slate-800">{name}</p>
-          <p className="text-[11px] text-slate-400">{ROLE_LABELS[role]}</p>
-        </div>
+        <Link
+          href="/dashboard/profile"
+          className="flex items-center gap-3 rounded-lg p-1 hover:bg-slate-100"
+          title="My profile"
+        >
+          <Avatar name={name} src={image} size={36} />
+          <div className="hidden leading-tight sm:block">
+            <p className="text-sm font-semibold text-slate-800">{name}</p>
+            <p className="text-[11px] text-slate-400">{ROLE_LABELS[role]}</p>
+          </div>
+        </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
           className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-red-600"

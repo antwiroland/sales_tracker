@@ -118,9 +118,6 @@ export default function LoginPage() {
           <Suspense fallback={<div className="h-48" />}>
             <LoginForm />
           </Suspense>
-          <p className="mt-4 text-center text-xs text-slate-400">
-            Demo accounts require running <code>npm run seed</code> first.
-          </p>
         </div>
       </div>
     </div>

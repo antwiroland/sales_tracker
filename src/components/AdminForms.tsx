@@ -275,7 +275,7 @@ export function UserForm() {
         <input className="input" placeholder="First name" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
         <input className="input" placeholder="Last name" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
         <input className="input col-span-2" placeholder="Email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-        <input className="input" placeholder="Password (min 6)" type="text" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+        <input className="input" placeholder="Password (blank = default)" type="text" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
         <input className="input" placeholder="Position" value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })} />
         <select className="input" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value as Role })}>
           {ALL_ROLES.map((r) => (
@@ -299,7 +299,13 @@ export function UserForm() {
       </div>
       <div className="mt-4 flex justify-end gap-2">
         <button className="btn-secondary" onClick={() => setOpen(false)}>Cancel</button>
-        <button className="btn-primary" onClick={submit} disabled={loading || !form.email || form.password.length < 6}>
+        <button
+          className="btn-primary"
+          onClick={submit}
+          disabled={
+            loading || !form.email || (form.password.length > 0 && form.password.length < 6)
+          }
+        >
           {loading && <Loader2 size={16} className="animate-spin" />} Create
         </button>
       </div>

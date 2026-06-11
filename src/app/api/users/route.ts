@@ -4,13 +4,14 @@ import { connectDB } from "@/lib/db";
 import { User } from "@/models";
 import { ok, route, requirePermission, requireUser } from "@/lib/api";
 import { audit } from "@/lib/audit";
-import { ALL_ROLES, AUDIT_ACTIONS } from "@/lib/constants";
+import { ALL_ROLES, AUDIT_ACTIONS, DEFAULT_USER_PASSWORD } from "@/lib/constants";
 
 const createSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   email: z.string().email(),
-  password: z.string().min(6),
+  // Optional — when omitted, the user is created with the default password.
+  password: z.string().min(6).optional().or(z.literal("")),
   role: z.enum(ALL_ROLES as [string, ...string[]]),
   position: z.string().optional(),
   branchId: z.string().optional().nullable(),
@@ -40,7 +41,7 @@ export const POST = route(async (req: Request) => {
   await connectDB();
   const body = createSchema.parse(await req.json());
 
-  const hashed = await bcrypt.hash(body.password, 10);
+  const hashed = await bcrypt.hash(body.password || DEFAULT_USER_PASSWORD, 10);
   const user = await User.create({
     ...body,
     email: body.email.toLowerCase(),

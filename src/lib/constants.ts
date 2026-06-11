@@ -25,6 +25,12 @@ export const ROLE_LABELS: Record<Role, string> = {
 /** Company / product name shown throughout the app. */
 export const COMPANY_NAME = "Trade Mart";
 
+/**
+ * Default password assigned to new users when an admin leaves the password blank.
+ * Users are expected to change it after their first sign-in.
+ */
+export const DEFAULT_USER_PASSWORD = "Password123!";
+
 export const INVOICE_STATUS = {
   DRAFT: "DRAFT",
   SUBMITTED: "SUBMITTED",
