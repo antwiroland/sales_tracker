@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/db";
 import { Branch, User } from "@/models";
 import { ROLES } from "@/lib/constants";
 import { PageHeader, Table, Th, Td, EmptyState } from "@/components/ui";
-import { BranchForm } from "@/components/AdminForms";
+import { BranchForm, BranchEdit } from "@/components/AdminForms";
 
 export default async function BranchesPage() {
   await requirePage("branch.manage");
@@ -37,6 +37,7 @@ export default async function BranchesPage() {
               <Th>Location</Th>
               <Th>Manager</Th>
               <Th>Sales Staff</Th>
+              <Th>Actions</Th>
             </tr>
           </thead>
           <tbody>
@@ -49,6 +50,16 @@ export default async function BranchesPage() {
                   <Td>{b.location || "—"}</Td>
                   <Td>{mgr ? `${mgr.firstName} ${mgr.lastName}` : "—"}</Td>
                   <Td>{countMap.get(String(b._id)) ?? 0}</Td>
+                  <Td>
+                    <BranchEdit
+                      branch={{
+                        _id: String(b._id),
+                        name: b.name,
+                        code: b.code ?? "",
+                        location: b.location ?? "",
+                      }}
+                    />
+                  </Td>
                 </tr>
               );
             })}

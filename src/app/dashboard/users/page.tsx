@@ -3,11 +3,12 @@ import { connectDB } from "@/lib/db";
 import { User } from "@/models";
 import { ROLE_LABELS, type Role } from "@/lib/constants";
 import { PageHeader, Table, Th, Td, Badge, Avatar, EmptyState } from "@/components/ui";
-import { UserForm } from "@/components/AdminForms";
+import { UserForm, UserEdit } from "@/components/AdminForms";
 
 const roleColor: Record<string, "blue" | "green" | "amber" | "slate" | "red"> = {
   ADMIN: "red",
   MANAGER: "blue",
+  SALES_MANAGER: "blue",
   SUPERVISOR: "amber",
   SALES: "green",
   EXECUTIVE: "slate",
@@ -39,11 +40,12 @@ export default async function UsersPage() {
               <Th>Role</Th>
               <Th>Branch</Th>
               <Th>Status</Th>
+              <Th>Actions</Th>
             </tr>
           </thead>
           <tbody>
             {users.map((u) => {
-              const branch = u.branchId as unknown as { name?: string };
+              const branch = u.branchId as unknown as { _id?: unknown; name?: string };
               return (
                 <tr key={String(u._id)}>
                   <Td>
@@ -70,6 +72,20 @@ export default async function UsersPage() {
                     <Badge color={u.isActive ? "green" : "slate"}>
                       {u.isActive ? "Active" : "Inactive"}
                     </Badge>
+                  </Td>
+                  <Td>
+                    <UserEdit
+                      user={{
+                        _id: String(u._id),
+                        firstName: u.firstName,
+                        lastName: u.lastName,
+                        role: u.role as Role,
+                        position: u.position ?? "",
+                        branchId: branch?._id ? String(branch._id) : "",
+                        supervisorId: u.supervisorId ? String(u.supervisorId) : "",
+                        isActive: u.isActive ?? true,
+                      }}
+                    />
                   </Td>
                 </tr>
               );

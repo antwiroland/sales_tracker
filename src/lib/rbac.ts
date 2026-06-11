@@ -12,20 +12,29 @@ export const PERMISSIONS = {
   "kpi.assign": [ROLES.ADMIN, ROLES.MANAGER],
   "kpi.assign.bulk": [ROLES.ADMIN, ROLES.MANAGER],
   "invoice.create": [ROLES.SALES],
-  "invoice.review": [ROLES.SUPERVISOR, ROLES.ADMIN],
+  "invoice.review": [ROLES.SUPERVISOR, ROLES.SALES_MANAGER, ROLES.ADMIN],
+  // Deleting sales records is reserved for sales managers and above — NOT supervisors.
+  "invoice.delete": [ROLES.ADMIN, ROLES.MANAGER, ROLES.SALES_MANAGER],
   "invoice.viewAll": [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE],
   "dashboard.sales": [ROLES.SALES],
-  "dashboard.supervisor": [ROLES.SUPERVISOR],
+  "dashboard.supervisor": [ROLES.SUPERVISOR, ROLES.SALES_MANAGER],
   "dashboard.manager": [ROLES.MANAGER, ROLES.ADMIN],
   "dashboard.executive": [ROLES.EXECUTIVE, ROLES.ADMIN, ROLES.MANAGER],
   "leaderboard.view": [
     ROLES.ADMIN,
     ROLES.MANAGER,
+    ROLES.SALES_MANAGER,
     ROLES.SUPERVISOR,
     ROLES.SALES,
     ROLES.EXECUTIVE,
   ],
-  "reports.view": [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE, ROLES.SUPERVISOR],
+  "reports.view": [
+    ROLES.ADMIN,
+    ROLES.MANAGER,
+    ROLES.EXECUTIVE,
+    ROLES.SALES_MANAGER,
+    ROLES.SUPERVISOR,
+  ],
   "audit.view": [ROLES.ADMIN],
   "settings.manage": [ROLES.ADMIN],
 } as const;
@@ -43,6 +52,7 @@ export function homeForRole(role: Role): string {
     case ROLES.SALES:
       return "/dashboard/sales";
     case ROLES.SUPERVISOR:
+    case ROLES.SALES_MANAGER:
       return "/dashboard/supervisor";
     case ROLES.MANAGER:
     case ROLES.ADMIN:

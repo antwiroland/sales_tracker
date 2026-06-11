@@ -6,7 +6,7 @@ import { useState } from "react";
 import * as Icons from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navForRole } from "@/lib/nav";
-import { ROLE_LABELS, type Role } from "@/lib/constants";
+import { COMPANY_NAME, ROLE_LABELS, type Role } from "@/lib/constants";
 
 function Icon({ name, size = 18 }: { name: string; size?: number }) {
   const C = (Icons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[
@@ -47,7 +47,7 @@ export function Sidebar({ role }: { role: Role }) {
         <div className="flex h-16 items-center gap-2 border-b border-slate-200 px-5">
           <Icons.BarChart3 className="text-brand-600" size={24} />
           <div className="leading-tight">
-            <p className="text-sm font-bold text-slate-900">Sales KPI</p>
+            <p className="text-sm font-bold text-slate-900">{COMPANY_NAME}</p>
             <p className="text-[11px] text-slate-400">{ROLE_LABELS[role]}</p>
           </div>
         </div>

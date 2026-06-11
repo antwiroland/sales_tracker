@@ -34,7 +34,7 @@ export const GET = route(async (req: Request) => {
   // Scope by role: sales see their own; supervisors see their queue; others see all.
   if (user.role === ROLES.SALES) {
     filter.employeeId = user.id;
-  } else if (user.role === ROLES.SUPERVISOR) {
+  } else if (user.role === ROLES.SUPERVISOR || user.role === ROLES.SALES_MANAGER) {
     filter.supervisorId = user.id;
   } else if (searchParams.get("employeeId")) {
     filter.employeeId = searchParams.get("employeeId");

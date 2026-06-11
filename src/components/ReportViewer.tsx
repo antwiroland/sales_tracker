@@ -27,7 +27,7 @@ const REPORTS = [
   { id: "branch", label: "Branch Performance" },
   { id: "company", label: "Company Performance" },
   { id: "leaderboard", label: "Leaderboard" },
-  { id: "invoice-approval", label: "Invoice Approval" },
+  { id: "invoice-approval", label: "Purchase Order Approval" },
 ];
 
 const now = new Date();

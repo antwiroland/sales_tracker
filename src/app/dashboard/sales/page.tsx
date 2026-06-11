@@ -57,7 +57,7 @@ export default async function SalesDashboard() {
         subtitle="Your KPI performance for this month"
         action={
           <Link href="/dashboard/invoices/new" className="btn-primary">
-            <FilePlus2 size={16} /> Submit Invoice
+            <FilePlus2 size={16} /> New Purchase Order
           </Link>
         }
       />
@@ -66,7 +66,7 @@ export default async function SalesDashboard() {
         <Card className="mb-6 border-amber-200 bg-amber-50">
           <p className="text-sm text-amber-800">
             You have no KPI target assigned for this month yet. Your manager will assign
-            one soon. You can still submit invoices below.
+            one soon. You can still submit purchase orders below.
           </p>
         </Card>
       ) : null}
@@ -81,7 +81,7 @@ export default async function SalesDashboard() {
         <StatCard
           label="Approved Sales"
           value={formatCurrency(summary?.approved ?? 0)}
-          hint={`${summary?.approvedCount ?? 0} invoices`}
+          hint={`${summary?.approvedCount ?? 0} purchase orders`}
           icon={<CheckCircle2 size={18} />}
           accent="green"
         />
@@ -200,13 +200,13 @@ export default async function SalesDashboard() {
 
         <Card>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-semibold text-slate-800">Recent Invoices</h2>
+            <h2 className="font-semibold text-slate-800">Recent Purchase Orders</h2>
             <Link href="/dashboard/invoices" className="text-xs text-brand-600 hover:underline">
               View all
             </Link>
           </div>
           {recent.length === 0 ? (
-            <EmptyState title="No invoices yet" message="Submit your first invoice." />
+            <EmptyState title="No purchase orders yet" message="Submit your first purchase order." />
           ) : (
             <ul className="space-y-3">
               {recent.map((inv) => (

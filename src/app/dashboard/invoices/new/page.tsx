@@ -7,7 +7,7 @@ export default async function NewInvoicePage() {
   return (
     <>
       <PageHeader
-        title="Submit Invoice"
+        title="New Purchase Order"
         subtitle="Create a sales record for supervisor approval"
       />
       <InvoiceForm />

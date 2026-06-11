@@ -42,7 +42,7 @@ export function InvoiceForm() {
   async function submit(status: "DRAFT" | "SUBMITTED") {
     setError("");
     if (!form.invoiceNumber || !form.customerName || !form.amount) {
-      setError("Invoice number, customer, and amount are required.");
+      setError("PO number, customer, and amount are required.");
       return;
     }
     setLoading(status === "DRAFT" ? "draft" : "submit");
@@ -77,16 +77,16 @@ export function InvoiceForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="label">Invoice Number *</label>
+          <label className="label">PO Number *</label>
           <input
             className="input"
             value={form.invoiceNumber}
             onChange={(e) => set("invoiceNumber", e.target.value)}
-            placeholder="INV-0001"
+            placeholder="PO-0001"
           />
         </div>
         <div>
-          <label className="label">Invoice Date *</label>
+          <label className="label">PO Date *</label>
           <input
             type="date"
             className="input"
@@ -137,7 +137,7 @@ export function InvoiceForm() {
       </div>
 
       <div className="mt-4">
-        <label className="label">Invoice Image</label>
+        <label className="label">Purchase Order Image</label>
         {preview ? (
           <div className="relative inline-block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -159,7 +159,7 @@ export function InvoiceForm() {
         ) : (
           <label className="flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 p-6 text-slate-400 hover:border-brand-400 hover:text-brand-500">
             <Upload size={24} />
-            <span className="mt-2 text-sm">Click to upload invoice image</span>
+            <span className="mt-2 text-sm">Click to upload purchase order image</span>
             <input type="file" accept="image/*" className="hidden" onChange={onFile} />
           </label>
         )}

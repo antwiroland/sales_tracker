@@ -3,6 +3,7 @@
 export const ROLES = {
   ADMIN: "ADMIN",
   MANAGER: "MANAGER",
+  SALES_MANAGER: "SALES_MANAGER",
   SUPERVISOR: "SUPERVISOR",
   SALES: "SALES",
   EXECUTIVE: "EXECUTIVE",
@@ -15,10 +16,14 @@ export const ALL_ROLES: Role[] = Object.values(ROLES);
 export const ROLE_LABELS: Record<Role, string> = {
   ADMIN: "Administrator",
   MANAGER: "Manager",
+  SALES_MANAGER: "Sales Manager",
   SUPERVISOR: "Supervisor",
   SALES: "Sales Personnel",
   EXECUTIVE: "Executive",
 };
+
+/** Company / product name shown throughout the app. */
+export const COMPANY_NAME = "Trade Mart";
 
 export const INVOICE_STATUS = {
   DRAFT: "DRAFT",
@@ -70,6 +75,7 @@ export const AUDIT_ACTIONS = {
   INVOICE_SUBMITTED: "INVOICE_SUBMITTED",
   INVOICE_APPROVED: "INVOICE_APPROVED",
   INVOICE_REJECTED: "INVOICE_REJECTED",
+  INVOICE_DELETED: "INVOICE_DELETED",
   CLARIFICATION_REQUESTED: "CLARIFICATION_REQUESTED",
   KPI_ASSIGNED: "KPI_ASSIGNED",
   KPI_BULK_ASSIGNED: "KPI_BULK_ASSIGNED",

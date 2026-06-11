@@ -110,7 +110,7 @@ export default async function LeaderboardPage() {
                 </div>
                 <div className="w-28 text-right">
                   <p className="font-semibold text-slate-800">{formatCurrency(e.approved)}</p>
-                  <p className="text-xs text-slate-400">{e.approvedCount} invoices</p>
+                  <p className="text-xs text-slate-400">{e.approvedCount} purchase orders</p>
                 </div>
                 <div className="hidden md:block">
                   <HealthBadge health={e.forecast.health} />

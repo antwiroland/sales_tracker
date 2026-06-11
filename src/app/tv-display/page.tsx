@@ -44,7 +44,7 @@ const healthBar: Record<string, string> = {
 export default function TvDisplayPage() {
   const [data, setData] = useState<TvData | null>(null);
   const [slide, setSlide] = useState(0);
-  const [interval, setIntervalSecs] = useState(120);
+  const [interval, setIntervalSecs] = useState(30);
   const [paused, setPaused] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);

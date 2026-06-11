@@ -19,7 +19,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Approval Queue",
     href: "/dashboard/supervisor",
     icon: "ClipboardCheck",
-    roles: [ROLES.SUPERVISOR],
+    roles: [ROLES.SUPERVISOR, ROLES.SALES_MANAGER],
   },
   {
     label: "Company Dashboard",
@@ -34,13 +34,13 @@ export const NAV_ITEMS: NavItem[] = [
     roles: [ROLES.EXECUTIVE, ROLES.ADMIN, ROLES.MANAGER],
   },
   {
-    label: "My Invoices",
+    label: "My Purchase Orders",
     href: "/dashboard/invoices",
     icon: "FileText",
     roles: [ROLES.SALES],
   },
   {
-    label: "Submit Invoice",
+    label: "New Purchase Order",
     href: "/dashboard/invoices/new",
     icon: "FilePlus2",
     roles: [ROLES.SALES],
@@ -61,13 +61,13 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Leaderboard",
     href: "/dashboard/leaderboard",
     icon: "Trophy",
-    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.SUPERVISOR, ROLES.SALES, ROLES.EXECUTIVE],
+    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.SALES_MANAGER, ROLES.SUPERVISOR, ROLES.SALES, ROLES.EXECUTIVE],
   },
   {
     label: "Reports",
     href: "/dashboard/reports",
     icon: "FileBarChart",
-    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE, ROLES.SUPERVISOR],
+    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE, ROLES.SALES_MANAGER, ROLES.SUPERVISOR],
   },
   {
     label: "Users",
@@ -91,7 +91,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "TV Display",
     href: "/tv-display",
     icon: "MonitorPlay",
-    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE, ROLES.SUPERVISOR],
+    roles: [ROLES.ADMIN, ROLES.MANAGER, ROLES.EXECUTIVE, ROLES.SALES_MANAGER, ROLES.SUPERVISOR],
   },
 ];
 

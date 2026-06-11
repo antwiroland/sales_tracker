@@ -4,8 +4,10 @@ import { getCurrentUser } from "@/lib/session";
 import { connectDB } from "@/lib/db";
 import { Invoice } from "@/models";
 import { ROLES, INVOICE_STATUS_LABELS, type InvoiceStatus } from "@/lib/constants";
+import { can } from "@/lib/rbac";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { PageHeader, Table, Th, Td, Badge, EmptyState } from "@/components/ui";
+import { DeleteInvoiceButton } from "@/components/InvoiceActions";
 
 function statusColor(s: InvoiceStatus) {
   return s === "APPROVED" ? "green" : s === "REJECTED" ? "red" : s === "DRAFT" ? "slate" : "amber";
@@ -18,7 +20,7 @@ export default async function InvoicesPage() {
   const filter: Record<string, unknown> =
     user.role === ROLES.SALES
       ? { employeeId: user.id }
-      : user.role === ROLES.SUPERVISOR
+      : user.role === ROLES.SUPERVISOR || user.role === ROLES.SALES_MANAGER
         ? { supervisorId: user.id }
         : {};
 
@@ -28,32 +30,35 @@ export default async function InvoicesPage() {
     .limit(200)
     .lean();
 
+  const canDelete = can(user.role, "invoice.delete");
+
   return (
     <>
       <PageHeader
-        title="Invoices"
-        subtitle={user.role === ROLES.SALES ? "Your submitted sales records" : "Invoices in scope"}
+        title="Purchase Orders"
+        subtitle={user.role === ROLES.SALES ? "Your submitted sales records" : "Purchase orders in scope"}
         action={
           user.role === ROLES.SALES ? (
             <Link href="/dashboard/invoices/new" className="btn-primary">
-              <FilePlus2 size={16} /> Submit Invoice
+              <FilePlus2 size={16} /> New Purchase Order
             </Link>
           ) : undefined
         }
       />
 
       {invoices.length === 0 ? (
-        <EmptyState title="No invoices" message="Nothing here yet." />
+        <EmptyState title="No purchase orders" message="Nothing here yet." />
       ) : (
         <Table>
           <thead>
             <tr>
-              <Th>Invoice #</Th>
+              <Th>PO #</Th>
               {user.role !== ROLES.SALES && <Th>Employee</Th>}
               <Th>Customer</Th>
               <Th>Amount</Th>
               <Th>Date</Th>
               <Th>Status</Th>
+              {canDelete && <Th>Actions</Th>}
             </tr>
           </thead>
           <tbody>
@@ -81,6 +86,11 @@ export default async function InvoicesPage() {
                       <p className="mt-1 text-xs text-red-500">{inv.rejectionReason}</p>
                     )}
                   </Td>
+                  {canDelete && (
+                    <Td>
+                      <DeleteInvoiceButton id={String(inv._id)} label={inv.invoiceNumber} />
+                    </Td>
+                  )}
                 </tr>
               );
             })}

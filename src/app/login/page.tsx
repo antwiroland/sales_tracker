@@ -3,12 +3,13 @@
 import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 const DEMO_PASSWORD = "Password123!";
 const DEMO_ACCOUNTS = [
   { role: "Admin", email: "admin@demo.com" },
   { role: "Manager", email: "manager@demo.com" },
+  { role: "Sales Mgr", email: "salesmanager@demo.com" },
   { role: "Supervisor", email: "supervisor1@demo.com" },
   { role: "Sales", email: "sales1@demo.com" },
   { role: "Executive", email: "exec@demo.com" },
@@ -106,11 +107,12 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-600 to-brand-700 p-4">
       <div className="w-full max-w-md">
         <div className="mb-6 flex flex-col items-center text-white">
-          <div className="mb-3 rounded-2xl bg-white/15 p-3">
-            <BarChart3 size={32} />
+          <div className="mb-3 rounded-2xl bg-white p-3 shadow-lg">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assests/tm-logo.png" alt="Trade Mart logo" className="h-16 w-16 object-contain" />
           </div>
-          <h1 className="text-2xl font-bold">Sales KPI System</h1>
-          <p className="text-sm text-white/70">Performance & Invoice Management</p>
+          <h1 className="text-2xl font-bold">Trade Mart</h1>
+          <p className="text-sm text-white/70">Performance & Purchase Order Management</p>
         </div>
         <div className="card p-6">
           <Suspense fallback={<div className="h-48" />}>

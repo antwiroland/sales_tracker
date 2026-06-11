@@ -65,9 +65,9 @@ async function main() {
 
   // ----- Branches -----
   const branchNames = [
-    { name: "Accra HQ", code: "ACC", location: "Greater Accra" },
-    { name: "Kumasi Branch", code: "KUM", location: "Ashanti" },
-    { name: "Takoradi Branch", code: "TAK", location: "Western" },
+    { name: "Spintex HQ", code: "SPX", location: "Greater Accra" },
+    { name: "Westlands", code: "WST", location: "Greater Accra" },
+    { name: "Tema", code: "TMA", location: "Greater Accra" },
   ];
   const branches = await Branch.insertMany(branchNames);
   console.log(`✓ ${branches.length} branches`);
@@ -123,6 +123,19 @@ async function main() {
   );
   console.log(`✓ ${supervisors.length} supervisors`);
 
+  // A sales manager — like a supervisor, but can also delete sales records.
+  // Branch-0 sales personnel report to them so they have a live review queue.
+  const salesManager = await User.create({
+    firstName: "Nana",
+    lastName: "Asante",
+    email: "salesmanager@demo.com",
+    password: hash,
+    role: ROLES.SALES_MANAGER,
+    position: "Sales Manager",
+    branchId: branches[0]._id,
+  });
+  console.log("✓ 1 sales manager");
+
   // Exactly 10 sales personnel, distributed across branches round-robin, with a
   // spread of performance profiles so dashboards/leaderboards have variety.
   const SALES_TOTAL = 10;
@@ -132,7 +145,8 @@ async function main() {
   for (let n = 0; n < SALES_TOTAL; n++) {
     const branchIdx = n % branches.length;
     const branch = branches[branchIdx];
-    const supervisor = supervisors[branchIdx];
+    // Branch-0 staff report to the sales manager; others to their supervisor.
+    const supervisor = branchIdx === 0 ? salesManager : supervisors[branchIdx];
     const approveBias = profiles[n];
 
     const sales = await User.create({
@@ -205,6 +219,7 @@ async function main() {
   console.log("  Admin       admin@demo.com");
   console.log("  Manager     manager@demo.com");
   console.log("  Executive   exec@demo.com");
+  console.log("  SalesMgr    salesmanager@demo.com");
   console.log("  Supervisor  supervisor1@demo.com  (…2, …3)");
   console.log("  Sales       sales1@demo.com       (…2, …3, …)");
   console.log("────────────────────────────────────────\n");

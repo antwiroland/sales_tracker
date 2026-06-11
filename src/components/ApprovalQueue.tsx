@@ -81,7 +81,7 @@ export function ApprovalQueue() {
     return (
       <EmptyState
         title="Queue is clear 🎉"
-        message="No invoices waiting for review."
+        message="No purchase orders waiting for review."
       />
     );
   }
@@ -171,12 +171,12 @@ export function ApprovalQueue() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
           <div className="w-full max-w-md rounded-xl bg-white p-5 shadow-xl">
             <h3 className="mb-1 font-semibold text-slate-800">
-              {modal.action === "reject" ? "Reject Invoice" : "Request Clarification"}
+              {modal.action === "reject" ? "Reject Purchase Order" : "Request Clarification"}
             </h3>
             <p className="mb-3 text-sm text-slate-500">
               {modal.action === "reject"
                 ? "Provide a reason for rejection. The salesperson will be notified."
-                : "Explain what needs clarifying. The invoice returns to the salesperson as a draft."}
+                : "Explain what needs clarifying. The purchase order returns to the salesperson as a draft."}
             </p>
             <textarea
               className="input min-h-24"

@@ -37,7 +37,7 @@ const REPORT_TITLES: Record<ReportType, string> = {
   branch: "Branch Performance Report",
   company: "Company Performance Report",
   leaderboard: "Leaderboard Report",
-  "invoice-approval": "Invoice Approval Report",
+  "invoice-approval": "Purchase Order Approval Report",
 };
 
 export async function buildReport(
@@ -63,7 +63,7 @@ export async function buildReport(
           { key: "approved", label: "Approved", type: "currency" },
           { key: "pending", label: "Pending", type: "currency" },
           { key: "achievementPercent", label: "Achievement", type: "percent" },
-          { key: "approvedCount", label: "Invoices", type: "number" },
+          { key: "approvedCount", label: "Purchase Orders", type: "number" },
         ],
         rows: board.map((e, i) => ({ rank: i + 1, ...e })) as unknown as Record<
           string,
@@ -114,8 +114,8 @@ export async function buildReport(
           { metric: "Total Pending", value: m.totalPending, _type: "currency" },
           { metric: "Achievement %", value: m.achievementPercent, _type: "percent" },
           { metric: "Active Sales Personnel", value: m.employeeCount },
-          { metric: "Approved Invoices", value: m.approvedInvoiceCount },
-          { metric: "Pending Invoices", value: m.pendingInvoiceCount },
+          { metric: "Approved Purchase Orders", value: m.approvedInvoiceCount },
+          { metric: "Pending Purchase Orders", value: m.pendingInvoiceCount },
         ],
       };
     }
@@ -128,7 +128,7 @@ export async function buildReport(
       return {
         ...base,
         columns: [
-          { key: "invoiceNumber", label: "Invoice #", type: "text" },
+          { key: "invoiceNumber", label: "PO #", type: "text" },
           { key: "employee", label: "Employee", type: "text" },
           { key: "customerName", label: "Customer", type: "text" },
           { key: "amount", label: "Amount", type: "currency" },
