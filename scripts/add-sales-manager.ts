@@ -31,7 +31,7 @@ async function main() {
     existing.role = ROLES.SALES_MANAGER;
     existing.password = hash;
     existing.isActive = true;
-    if (branch) existing.branchId = branch._id;
+    if (branch) existing.set("branchId", branch._id);
     await existing.save();
     console.log(`✓ Updated existing user ${EMAIL} (role=SALES_MANAGER, password reset)`);
   } else {
