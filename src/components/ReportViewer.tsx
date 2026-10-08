@@ -7,6 +7,7 @@ import autoTable from "jspdf-autotable";
 import { Loader2, FileText, FileSpreadsheet, Download } from "lucide-react";
 import { Card, Table, Th, Td, EmptyState } from "./ui";
 import { MONTH_NAMES, formatCurrency, formatPercent } from "@/lib/utils";
+import { APP_NAME } from "@/lib/constants";
 
 interface Column {
   key: string;
@@ -92,13 +93,13 @@ export function ReportViewer() {
     doc.text(data.title, 14, 16);
     doc.setFontSize(10);
     doc.setTextColor(120);
-    doc.text(data.period, 14, 22);
+    doc.text(`${data.period} · ${APP_NAME}`, 14, 22);
     autoTable(doc, {
       head: [head],
       body,
       startY: 28,
       styles: { fontSize: 9 },
-      headStyles: { fillColor: [37, 99, 235] },
+      headStyles: { fillColor: [39, 72, 224] },
     });
     doc.save(`${fileBase()}.pdf`);
   }

@@ -1,6 +1,6 @@
 /**
- * One-off migration — renames the existing branches to the current org layout
- * (Spintex HQ, Westlands, Tema) without touching users / purchase orders.
+ * One-off migration — renames the existing branches to the generic demo layout
+ * (Head Office, North Branch, East Branch) without touching users / purchase orders.
  *   npx tsx scripts/update-branches.ts
  *
  * Idempotent: matches old branches by previous name or code; any remaining
@@ -16,16 +16,16 @@ import { connectDB } from "@/lib/db";
 import { Branch } from "@/models";
 
 const TARGETS = [
-  { name: "Spintex HQ", code: "SPX", location: "Greater Accra" },
-  { name: "Westlands", code: "WST", location: "Greater Accra" },
-  { name: "Tema", code: "TMA", location: "Greater Accra" },
+  { name: "Head Office", code: "HQ", location: "Central" },
+  { name: "North Branch", code: "NTH", location: "North" },
+  { name: "East Branch", code: "EST", location: "East" },
 ];
 
 // Old name/code -> target index.
 const ALIASES: Record<string, number> = {
-  "Accra HQ": 0, ACC: 0,
-  "Kumasi Branch": 1, KUM: 1,
-  "Takoradi Branch": 2, TAK: 2,
+  "Head Office": 0, HQ: 0, "Spintex HQ": 0, SPX: 0, "Accra HQ": 0, ACC: 0,
+  "North Branch": 1, NTH: 1, Westlands: 1, WST: 1, "Kumasi Branch": 1, KUM: 1,
+  "East Branch": 2, EST: 2, Tema: 2, TMA: 2, "Takoradi Branch": 2, TAK: 2,
 };
 
 async function main() {

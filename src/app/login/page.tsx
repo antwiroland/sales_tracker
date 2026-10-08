@@ -4,6 +4,8 @@ import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { LogoMark, Wordmark } from "@/components/Logo";
+import { APP_TAGLINE } from "@/lib/constants";
 
 const DEMO_PASSWORD = "Password123!";
 const DEMO_ACCOUNTS = [
@@ -104,15 +106,14 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-600 to-brand-700 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-800 via-brand-900 to-slate-900 p-4">
       <div className="w-full max-w-md">
         <div className="mb-6 flex flex-col items-center text-white">
-          <div className="mb-3 rounded-2xl bg-white p-3 shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assests/tm-logo.png" alt="Trade Mart logo" className="h-16 w-16 object-contain" />
-          </div>
-          <h1 className="text-2xl font-bold">Trade Mart</h1>
-          <p className="text-sm text-white/70">Performance & Purchase Order Management</p>
+          <LogoMark size={72} className="mb-3 rounded-[18px] shadow-lg ring-4 ring-white/15" />
+          <h1 className="text-3xl">
+            <Wordmark onDark />
+          </h1>
+          <p className="text-sm text-white/70">{APP_TAGLINE}</p>
         </div>
         <div className="card p-6">
           <Suspense fallback={<div className="h-48" />}>

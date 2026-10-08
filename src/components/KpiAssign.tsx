@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
 import { Loader2, Upload, Users, User as UserIcon, FileSpreadsheet } from "lucide-react";
 import { MONTH_NAMES } from "@/lib/utils";
+import { CURRENCY } from "@/lib/constants";
 
 interface Employee {
   _id: string;
@@ -218,7 +219,7 @@ export function KpiAssign() {
             </select>
           </div>
           <div>
-            <label className="label">Target Value (GH₵)</label>
+            <label className="label">Target Value ({CURRENCY})</label>
             <input className="input" type="number" value={target} onChange={(e) => setTarget(e.target.value)} placeholder="500000" />
           </div>
         </div>
@@ -227,7 +228,7 @@ export function KpiAssign() {
       {mode === "bulk" && (
         <div className="mt-4">
           <div className="mb-2 flex items-center justify-between gap-3">
-            <label className="label mb-0">Target Value (GH₵)</label>
+            <label className="label mb-0">Target Value ({CURRENCY})</label>
             <input
               className="input max-w-40"
               type="number"

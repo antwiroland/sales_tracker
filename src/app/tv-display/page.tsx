@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Maximize, Minimize, Pause, Play, X } from "lucide-react";
 import Link from "next/link";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { LogoMark, Wordmark } from "@/components/Logo";
 import { TV_ROTATION_OPTIONS, HEALTH_LABELS } from "@/lib/constants";
 import { formatCurrency, formatPercent, avatarUrl, MONTH_NAMES } from "@/lib/utils";
 
@@ -130,9 +131,15 @@ export default function TvDisplayPage() {
 
       {/* Header */}
       <div className="flex items-center justify-between px-10 pt-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Sales Performance</h1>
-          <p className="text-white/50">{period}</p>
+        <div className="flex items-center gap-4">
+          <LogoMark size={56} />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Sales Performance</h1>
+            <p className="text-white/50">
+              <Wordmark onDark className="mr-2" />
+              {period}
+            </p>
+          </div>
         </div>
         <CountdownTimer big />
       </div>

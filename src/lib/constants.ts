@@ -22,8 +22,9 @@ export const ROLE_LABELS: Record<Role, string> = {
   EXECUTIVE: "Executive",
 };
 
-/** Company / product name shown throughout the app. */
-export const COMPANY_NAME = "Trade Mart";
+/** Product name and tagline shown throughout the app. */
+export const APP_NAME = "BeBest";
+export const APP_TAGLINE = "Sales Performance & Purchase Order Management";
 
 /**
  * Default password assigned to new users when an admin leaves the password blank.
@@ -94,8 +95,9 @@ export const AUDIT_ACTIONS = {
 
 export type AuditAction = (typeof AUDIT_ACTIONS)[keyof typeof AUDIT_ACTIONS];
 
-// Default app currency for display.
-export const CURRENCY = "GH₵";
+// Display currency and number/date locale — set per deployment in .env.
+export const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || "GH₵";
+export const LOCALE = process.env.NEXT_PUBLIC_LOCALE || "en-GH";
 
 export const TV_ROTATION_OPTIONS = [
   { label: "30 Seconds", value: 30 },

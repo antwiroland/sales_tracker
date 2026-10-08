@@ -1,4 +1,4 @@
-# Sales KPI Performance & Invoice Approval Management System
+# BeBest — Sales Performance & Purchase Order Management
 
 A KPI-driven sales performance platform: sales personnel submit invoice-based sales
 records, supervisors approve them, and the system automatically updates KPI
@@ -56,6 +56,10 @@ CLOUDINARY_API_SECRET=
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 
 SEED_PASSWORD=Password123!
+
+# Optional — currency symbol and locale (defaults: GH₵ / en-GH)
+NEXT_PUBLIC_CURRENCY=
+NEXT_PUBLIC_LOCALE=
 ```
 
 ### 3. Seed demo data

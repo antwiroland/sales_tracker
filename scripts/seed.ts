@@ -65,9 +65,9 @@ async function main() {
 
   // ----- Branches -----
   const branchNames = [
-    { name: "Spintex HQ", code: "SPX", location: "Greater Accra" },
-    { name: "Westlands", code: "WST", location: "Greater Accra" },
-    { name: "Tema", code: "TMA", location: "Greater Accra" },
+    { name: "Head Office", code: "HQ", location: "Central" },
+    { name: "North Branch", code: "NTH", location: "North" },
+    { name: "East Branch", code: "EST", location: "East" },
   ];
   const branches = await Branch.insertMany(branchNames);
   console.log(`✓ ${branches.length} branches`);
@@ -100,7 +100,7 @@ async function main() {
   const firstNames = ["Kwame", "Ama", "Kofi", "Akua", "Yaw", "Abena", "Kwabena", "Adwoa", "Kojo", "Esi", "Kwesi", "Afia"];
   const lastNames = ["Mensah", "Owusu", "Boateng", "Asante", "Agyeman", "Appiah", "Osei", "Annan", "Addo", "Darko"];
 
-  const customers = ["MTN Ghana", "Melcom", "Fan Milk", "Kasapreko", "Guinness Ghana", "GCB Bank", "Ecobank Ghana", "GOIL", "Unilever Ghana", "Nestlé Ghana"];
+  const customers = ["Northwind Traders", "Bluepeak Retail", "Harbor Foods", "Summit Logistics", "Evergreen Supplies", "Crestline Bank", "Orbit Telecom", "Lumen Energy", "Atlas Wholesale", "Brightway Stores"];
 
   let invoiceCount = 0;
   let assignmentCount = 0;

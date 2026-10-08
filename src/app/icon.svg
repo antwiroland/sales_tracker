@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="BeBest">
+  <defs>
+    <linearGradient id="bebest-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f7bff"/>
+      <stop offset="1" stop-color="#1f38bd"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bebest-g)"/>
+  <path fill="#fff" fill-rule="evenodd" d="M18 14h16a10 10 0 0 1 6.9 17.2A11 11 0 0 1 35 51H18zM26 21.5v7h7a3.5 3.5 0 0 0 0-7zM26 35.5v8h8a4 4 0 0 0 0-8z"/>
+  <path fill="#fbbf24" d="M49 9l1.9 5.1L56 16l-5.1 1.9L49 23l-1.9-5.1L42 16l5.1-1.9z"/>
+</svg>

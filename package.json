@@ -1,8 +1,8 @@
 {
-  "name": "sales-kpi",
+  "name": "bebest",
   "version": "1.0.0",
   "private": true,
-  "description": "Sales KPI Performance & Invoice Approval Management System",
+  "description": "BeBest — Sales Performance & Purchase Order Management",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { CURRENCY } from "./constants";
+import { CURRENCY, LOCALE } from "./constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -8,11 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatCurrency(amount: number): string {
   const n = Number.isFinite(amount) ? amount : 0;
-  return `${CURRENCY}${n.toLocaleString("en-GH", { maximumFractionDigits: 0 })}`;
+  return `${CURRENCY}${n.toLocaleString(LOCALE, { maximumFractionDigits: 0 })}`;
 }
 
 export function formatNumber(n: number): string {
-  return (Number.isFinite(n) ? n : 0).toLocaleString("en-GH", {
+  return (Number.isFinite(n) ? n : 0).toLocaleString(LOCALE, {
     maximumFractionDigits: 1,
   });
 }
@@ -23,7 +23,7 @@ export function formatPercent(n: number): string {
 
 export function formatDate(d: Date | string): string {
   const date = typeof d === "string" ? new Date(d) : d;
-  return date.toLocaleDateString("en-GH", {
+  return date.toLocaleDateString(LOCALE, {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -38,7 +38,7 @@ export function initials(firstName?: string, lastName?: string): string {
 export function avatarUrl(name: string): string {
   return `https://ui-avatars.com/api/?name=${encodeURIComponent(
     name,
-  )}&background=2563eb&color=fff&bold=true`;
+  )}&background=2748e0&color=fff&bold=true`;
 }
 
 // ----- Month / period helpers -----

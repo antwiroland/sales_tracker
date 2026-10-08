@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Upload, X } from "lucide-react";
+import { CURRENCY } from "@/lib/constants";
 
 export function InvoiceForm() {
   const router = useRouter();
@@ -104,7 +105,7 @@ export function InvoiceForm() {
           />
         </div>
         <div>
-          <label className="label">Amount (GH₵) *</label>
+          <label className="label">Amount ({CURRENCY}) *</label>
           <input
             type="number"
             min="0"
